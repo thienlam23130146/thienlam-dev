@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { GithubRepos } from '@/components/GithubRepos';
 import { TagFilter } from '@/components/TagFilter';
 import { projects } from '@/lib/projects';
 export default function ProjectsPage() {
@@ -6,18 +8,25 @@ export default function ProjectsPage() {
 
   return (
     <main className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Danh sách dự án</h1>
+      <section>
+        <h1 className="text-2xl font-bold mb-4">Danh sách dự án</h1>
 
-        {/* <TagFilter tags={["web", "IoT", "Ai", "AR"]} /> */}
-        <TagFilter tags={allTags} />
+          {/* <TagFilter tags={["web", "IoT", "Ai", "AR"]} /> */}
+          <TagFilter tags={allTags} />
 
-      <ul className="list-disc pl-6 space-y-2 mt-4">
-        {projects.map((project) => (
-          <li key={project.slug} className="text-lg">
-            {project.title}
-          </li>
-        ))}
-      </ul>
+        <ul className="list-disc pl-6 space-y-2 mt-4">
+          {projects.map((project) => (
+            <li key={project.slug} className="text-lg">
+              {project.title}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-12 pt-8 border-t">
+        <h2 className="text-xl font-bold">GitHub Repositories</h2>
+        <GithubRepos username="thienlam23130146" />
+      </section>
     </main>
   );
 }
